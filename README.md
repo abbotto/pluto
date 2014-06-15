@@ -3,17 +3,9 @@ Pluto
 
 A comprehensive security pentesting suite for Ubuntu/Raspbian
 
-Script:
+Script: cd /opt && sudo wget https://raw.githubusercontent.com/o0110o/pluto/master/pluto.sh
 
-cd /opt && sudo wget https://raw.githubusercontent.com/o0110o/pluto/master/pluto.sh
+Permissions: sudo chown username:username pluto.sh && chmod +x pluto.sh
 
-
-Permissions:
-
-sudo chown username:username pluto.sh && chmod +x pluto.sh
-
-
-Install:
-
-./pluto.sh username
+Install: n./pluto.sh username
 
