@@ -37,7 +37,7 @@ echo "Creating the Pentest Directory..."
 mkdir /opt/pentest
 mkdir /opt/pentest/tmp
 
-echo "Updating the Default Repository..."
+echo "Updating the Repository..."
 apt-get update
 
 echo "Installing Applications From the Repository..."
