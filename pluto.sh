@@ -1,6 +1,14 @@
 #!/bin/bash
 # Pluto: Pentesting Suite for Ubuntu/Raspbian Distributions
 # Created by Jared Abbott: @o0110o
+
+echo 'Escalating Privileges for the Current User...'
+# INVOKE SUDO
+if [ $EUID != 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
 echo "-------------------------------------------------------------"
 echo "  ________   ___        ___  ___   _________   ________      "
 echo " |\   __  \ |\  \      |\  \|\  \ |\___   ___\|\   __  \     "
@@ -25,15 +33,7 @@ echo "-------------------------------------------------------------"
 read INPUT
 echo ""
 
-echo 'Escalating Privileges for the Current User...'
-# INVOKE SUDO
-if [ $EUID != 0 ]; then
-    sudo "$0" "$@"
-    exit $?
-fi
-
 echo "Setting Owner: $1"
-
 echo "Creating the Pentest Directory..."
 mkdir /opt/pentest
 mkdir /opt/pentest/tmp
