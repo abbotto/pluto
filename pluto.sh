@@ -13,7 +13,7 @@ echo ""
 echo " === Release 0.1.0 === "
 echo " === Jared Abbott | @o0110o === "
 echo ""
-echo "----------------------------------------------------------------"
+echo "---------------------------------------------------------------------"
 echo " A comprehensive security pentesting software suite onto your Ubuntu/Raspbian. "
 echo " See README.md for more information. "
 echo ""
@@ -42,14 +42,14 @@ echo "Now Installing: lsb-release perl python libpcap-dev libpq-dev libsqlite3-d
 apt-get -y install lsb-release perl python libpcap-dev libpq-dev libsqlite3-dev dnstracer hostapd btscanner dsniff python-twisted-web python-pymssql tcpdump hping3 nbtscan ptunnel ngrep tcpflow proxychains proxytunnel siege netcat iodine smbclient sslsniff tcptraceroute netdiscover udptunnel ssldump xprobe python-scapy w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp fping ike-scan darkstat netdiscover iw avahi-daemon netmask dnswalk hydra openjdk-7-jre openjdk-7-jdk lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libncurses-dev libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3
 
 if grep --quiet "Raspbian" /etc/issue; then
-	echo "Installing Raspbian Dependancies..."
+	echo "Installing Raspbian Dependencies..."
 	echo "Now Installing: rpi-update libruby libnl-genl-3-dev..."
 	apt-get -y install rpi-update libruby libnl-genl-3-dev
 	echo "Updating the R-Pi Firmware..."
 	rpi-update
 fi
 
-echo "Installing Ruby Application Dependancies..."
+echo "Installing Ruby Application Dependencies..."
 gem install --no-ri --no-rdoc bundler nokogiri colorize rake sqlite3
 
 echo "Installing Applications From Source..."
@@ -145,3 +145,13 @@ chown $1:$1 /home/$1/.bash_aliases
 chown -R $1:$1 /opt/pentest
 
 echo 'Setup completed. Have Fun...'
+echo "---------------------------------------------------------------------"
+echo "  ________   ________     _____     _____   ________   ________      "
+echo " |\   __  \ |\   __  \   / __  \   / __  \ |\   __  \ |\   __  \     "
+echo " \ \  \|\  \\ \  \|\  \ |\/_|\  \ |\/_|\  \\ \  \|\  \\ \  \|\  \    "
+echo "  \ \  \\\  \\ \  \\\  \\|/ \ \  \\|/ \ \  \\ \  \\\  \\ \  \\\  \   "
+echo "   \ \  \\\  \\ \  \\\  \    \ \  \    \ \  \\ \  \\\  \\ \  \\\  \  "
+echo "    \ \_______\\ \_______\    \ \__\    \ \__\\ \_______\\ \_______\ "
+echo "     \|_______| \|_______|     \|__|     \|__| \|_______| \|_______| "
+echo ""
+echo "---------------------------------------------------------------------"
