@@ -27,10 +27,9 @@ echo " === See README.md for more information ==="
 echo ""
 echo "-------------------------------------------------------------"
 echo ""
-echo "Press ENTER to continue, CTRL+C to abort."
+echo "Press CTRL+C to abort."
 echo ""
 echo "-------------------------------------------------------------"
-read INPUT
 echo ""
 
 echo "Setting Owner: $1"
