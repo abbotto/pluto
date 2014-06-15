@@ -2,8 +2,27 @@
 # Pluto: Pentesting Suite for Ubuntu/Raspbian Distributions
 # Created by Jared Abbott: @o0110o
 
+echo "  ________   ___        ___  ___   _________   ________      "
+echo " |\   __  \ |\  \      |\  \|\  \ |\___   ___\|\   __  \     "
+echo " \ \  \|\  \\ \  \     \ \  \\\  \\|___ \  \_|\ \  \|\  \    "
+echo "  \ \   ____\\ \  \     \ \  \\\  \    \ \  \  \ \  \\\  \   "
+echo "   \ \  \___| \ \  \____ \ \  \\\  \    \ \  \  \ \  \\\  \  "
+echo "    \ \__\     \ \_______\\ \_______\    \ \__\  \ \_______\ "
+echo "     \|__|      \|_______| \|_______|     \|__|   \|_______| "
+echo ""
+echo " === Release 0.1.0 === "
+echo " === Jared Abbott | @o0110o === "
+echo ""
+echo "----------------------------------------------------------------"
+echo " A comprehensive security pentesting software suite onto your Ubuntu/Raspbian. "
+echo " See README.md for more information. "
+echo ""
+echo "Press ENTER to continue, CTRL+C to abort."
+read INPUT
+echo ""
+
 echo 'Escalating Privileges for the Current User...'
-# Invoke SUDO
+# INVOKE SUDO
 if [ $EUID != 0 ]; then
     sudo "$0" "$@"
     exit $?
@@ -18,12 +37,12 @@ mkdir /opt/pentest/tmp
 echo "Updating the Default Repository..."
 apt-get update
 
-echo "Installing Applications From the Default Repository..."
+echo "Installing Applications From the Repository..."
 echo "Now Installing: lsb-release perl python libpcap-dev libpq-dev libsqlite3-dev dnstracer hostapd btscanner dsniff python-twisted-web python-pymssql tcpdump hping3 nbtscan ptunnel ngrep tcpflow proxychains proxytunnel siege netcat iodine smbclient sslsniff tcptraceroute netdiscover udptunnel ssldump xprobe python-scapy w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp fping ike-scan darkstat netdiscover iw avahi-daemon netmask dnswalk hydra openjdk-7-jre openjdk-7-jdk lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libncurses-dev libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3..."
 apt-get -y install lsb-release perl python libpcap-dev libpq-dev libsqlite3-dev dnstracer hostapd btscanner dsniff python-twisted-web python-pymssql tcpdump hping3 nbtscan ptunnel ngrep tcpflow proxychains proxytunnel siege netcat iodine smbclient sslsniff tcptraceroute netdiscover udptunnel ssldump xprobe python-scapy w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp fping ike-scan darkstat netdiscover iw avahi-daemon netmask dnswalk hydra openjdk-7-jre openjdk-7-jdk lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libncurses-dev libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3
 
 if grep --quiet "Raspbian" /etc/issue; then
-	echo "Entering Raspbian Mode..."
+	echo "Installing Raspbian Dependancies..."
 	echo "Now Installing: rpi-update libruby libnl-genl-3-dev..."
 	apt-get -y install rpi-update libruby libnl-genl-3-dev
 	echo "Updating the R-Pi Firmware..."
@@ -125,4 +144,4 @@ echo 'Setting the Correct Permissions for the Current User'
 chown $1:$1 /home/$1/.bash_aliases
 chown -R $1:$1 /opt/pentest
 
-echo 'Done.'
+echo 'Setup completed. Have Fun...'
