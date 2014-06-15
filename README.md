@@ -11,7 +11,7 @@ Install: ./pluto.sh username
 
 Usage
 =====
-At the console type either of the following to find out about apps installed in /opt/pentest:
+At the console type either of the following to find out about a particular app installed in /opt/pentest:
 
 webscan --help
 
