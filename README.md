@@ -190,7 +190,8 @@ kismet
 libnl-dev
 
 sqlite3
-
+ 
+  
 Raspbian Apps:
 
 rpi-update
