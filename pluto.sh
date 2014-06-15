@@ -17,11 +17,13 @@ echo "Installing Applications From the Default Repository..."
 if [ $(lsb_release -si) == "Ubuntu" ]; then
 	echo "Entering Ubuntu Mode..."
 	echo "Now Installing: perl python libpq-dev btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3..."
-	apt-get update && apt-get -y install perl python libpcap-dev libpq-dev btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3
+	apt-get update
+	apt-get -y install perl python libpcap-dev libpq-dev btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3
 else
 	echo "Entering Raspbian Mode..."
 	echo "Now Installing: perl python libpq-dev rpi-update btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev libruby python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3 libnl-genl-3-dev..."
-	apt-get update && apt-get -y install perl python libpcap-dev libpq-dev rpi-update btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev libruby python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3 libnl-genl-3-dev
+	apt-get update
+	apt-get -y install perl python libpcap-dev libpq-dev rpi-update btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev libruby python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3 libnl-genl-3-dev
 	
 	echo "Updating the R-Pi Firmware..."
 	rpi-update
