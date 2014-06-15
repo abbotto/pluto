@@ -3,4 +3,5 @@ Pluto
 
 Pentesting Suite for Ubuntu/Raspbian Distributions
 
-Usage: ./pluto.sh username
+Permissions:  sudo chown username:username pluto.sh && chmod +x pluto.sh 
+Usage:        ./pluto.sh username
