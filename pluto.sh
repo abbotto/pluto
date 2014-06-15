@@ -1,7 +1,7 @@
 #!/bin/bash
 # Pluto: Pentesting Suite for Ubuntu/Raspbian Distributions
 # Created by Jared Abbott: @o0110o
-
+echo "-------------------------------------------------------------"
 echo "  ________   ___        ___  ___   _________   ________      "
 echo " |\   __  \ |\  \      |\  \|\  \ |\___   ___\|\   __  \     "
 echo " \ \  \|\  \\ \  \     \ \  \\\  \\|___ \  \_|\ \  \|\  \    "
@@ -10,14 +10,18 @@ echo "   \ \  \___| \ \  \____ \ \  \\\  \    \ \  \  \ \  \\\  \  "
 echo "    \ \__\     \ \_______\\ \_______\    \ \__\  \ \_______\ "
 echo "     \|__|      \|_______| \|_______|     \|__|   \|_______| "
 echo ""
+echo "-------------------------------------------------------------"
+echo ""
 echo " === Release 0.1.0 === "
 echo " === Jared Abbott | @o0110o === "
+echo " === A comprehensive security pentesting software suite onto your Ubuntu/Raspbian ==="
+echo " === See README.md for more information ==="
 echo ""
-echo "---------------------------------------------------------------------"
-echo " A comprehensive security pentesting software suite onto your Ubuntu/Raspbian. "
-echo " See README.md for more information. "
+echo "-------------------------------------------------------------"
 echo ""
 echo "Press ENTER to continue, CTRL+C to abort."
+echo ""
+echo "-------------------------------------------------------------"
 read INPUT
 echo ""
 
