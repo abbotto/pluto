@@ -7,5 +7,5 @@ Script: cd /opt && sudo wget https://raw.githubusercontent.com/o0110o/pluto/mast
 
 Permissions: sudo chown username:username pluto.sh && chmod +x pluto.sh
 
-Install: n./pluto.sh username
+Install: ./pluto.sh username
 
