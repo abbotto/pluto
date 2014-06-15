@@ -2,13 +2,6 @@
 # Pluto: Pentesting Suite for Ubuntu/Raspbian Distributions
 # Created by Jared Abbott: @o0110o
 
-echo 'Escalating Privileges for the Current User...'
-# INVOKE SUDO
-if [ $EUID != 0 ]; then
-    sudo "$0" "$@"
-    exit $?
-fi
-
 echo "-------------------------------------------------------------"
 echo "  ________   ___        ___  ___   _________   ________      "
 echo " |\   __  \ |\  \      |\  \|\  \ |\___   ___\|\   __  \     "
@@ -22,7 +15,7 @@ echo "-------------------------------------------------------------"
 echo ""
 echo " === Release 0.1.0 === "
 echo " === Jared Abbott | @o0110o === "
-echo " === A comprehensive security pentesting software suite onto your Ubuntu/Raspbian ==="
+echo " === A comprehensive security pentesting suite for Ubuntu/Raspbian ==="
 echo " === See README.md for more information ==="
 echo ""
 echo "-------------------------------------------------------------"
@@ -31,6 +24,13 @@ echo "Press CTRL+C to abort."
 echo ""
 echo "-------------------------------------------------------------"
 echo ""
+
+echo 'Escalating Privileges for the Current User...'
+# INVOKE SUDO
+if [ $EUID != 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
 
 echo "Setting Owner: $1"
 echo "Creating the Pentest Directory..."
