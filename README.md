@@ -39,6 +39,8 @@ theharvester
 
 robotosrider
 
+exploits database
+
 lsb-release
 
 perl
