@@ -9,6 +9,8 @@ if [ $EUID != 0 ]; then
     exit $?
 fi
 
+echo "Setting Owner: $1"
+
 echo "Creating the Pentest Directory..."
 mkdir /opt/pentest
 mkdir /opt/pentest/tmp
@@ -17,22 +19,19 @@ echo "Updating the Default Repository..."
 apt-get update
 
 echo "Installing Applications From the Default Repository..."
-if [ $(lsb_release -si) == "Ubuntu" ]; then
-	echo "Entering Ubuntu Mode..."
-	echo "Now Installing: perl python libpq-dev btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3..."
-	apt-get -y install perl python libpcap-dev libpq-dev libsqlite3-dev btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3
-else
+echo "Now Installing: lsb-release perl python libpcap-dev libpq-dev libsqlite3-dev dnstracer hostapd btscanner dsniff python-twisted-web python-pymssql tcpdump hping3 nbtscan ptunnel ngrep tcpflow proxychains proxytunnel siege netcat iodine smbclient sslsniff tcptraceroute netdiscover udptunnel ssldump xprobe python-scapy w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp fping ike-scan darkstat netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libncurses-dev libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3..."
+apt-get -y install lsb-release perl python libpcap-dev libpq-dev libsqlite3-dev dnstracer hostapd btscanner dsniff python-twisted-web python-pymssql tcpdump hping3 nbtscan ptunnel ngrep tcpflow proxychains proxytunnel siege netcat iodine smbclient sslsniff tcptraceroute netdiscover udptunnel ssldump xprobe python-scapy w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp fping ike-scan darkstat netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev python-lxml libxml2 libncurses-dev libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3
+
+if grep --quiet "Raspbian" /etc/issue; then
 	echo "Entering Raspbian Mode..."
-	echo "Now Installing: perl python libpq-dev rpi-update btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev libruby python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3 libnl-genl-3-dev..."
-	apt-get -y install perl python libpcap-dev libpq-dev libsqlite3-dev rpi-update btscanner w3af subversion ettercap-text-only nikto nbtscan medusa ratproxy sslscan netwox darkstat reaver ipcalc rsync xrdp netdiscover iw avahi-daemon netmask dnswalk hydra lynis libssl-dev libnl1 libnl-3-200 libnl-genl-3-200 libcurl4-gnutls-dev libruby python-lxml libxml2 libxml2-dev libxslt1-dev ruby-dev skipfish wapiti nmap macchanger wireshark kismet libnl-dev sqlite3 libnl-genl-3-dev
-	
+	echo "Now Installing: rpi-update libruby libnl-genl-3-dev..."
+	apt-get -y install rpi-update libruby libnl-genl-3-dev
 	echo "Updating the R-Pi Firmware..."
 	rpi-update
 fi
 
 echo "Installing Ruby Application Dependancies..."
-gem install --no-ri --no-rdoc bundler colorize nokogiri rake sqlite3
-sudo -u $1 bundle update
+gem install --no-ri --no-rdoc bundler nokogiri colorize rake sqlite3
 
 echo "Installing Applications From Source..."
 echo "Now Installing: Aircrack..."
@@ -72,7 +71,11 @@ wget http://downloads.metasploit.com/data/releases/framework-latest.tar.bz2
 tar jxpf framework-latest.tar.bz2
 rm -rf framework-latest.tar.bz2
 cd /opt/pentest/msf3/
-sudo -u $1 bundle install
+# SET THE CORRECT PERMISSION FOR BUNDLE
+chown -R $1:$1 /opt/pentest/msf3
+# BUNDLE SHOULD BE RUN AS A NON-ROOT USER
+su -c 'bundle update' $1
+su -c 'bundle install' $1
 cd /opt/pentest
 
 echo "Now Installing: Social Engineer Toolkit..."
@@ -97,10 +100,11 @@ echo "Creating the Configuration Files..."
 find /opt/pentest/RobotsRider/config -type f -exec sed -i 's/\/home\/harvester\/Tools/\/opt\/pentest\/RobotsRider\/ThirdParty/g' {} \;
 find /opt/pentest/RobotsRider/config -type f -exec sed -i 's/\/opt\/pentest\/RobotsRider\/ThirdParty\/RobotsRider/\/opt\/pentest\/RobotsRider/g' {} \;
 find /opt/pentest/RobotsRider/config -type f -exec sed -i 's/\/home\/felmoltor\/Tools/\/opt\/pentest/g' {} \;
-find /opt/pentest/RobotsRider -type f -exec sed -i 's/\/theHarvester-2.2a//g' {} \;
+find /opt/pentest/RobotsRider/config -type f -exec sed -i 's/\/theHarvester-2.2a//g' {} \;
 find /opt/pentest/RobotsRider/config -type f -exec sed -i 's/\/opt\/pentest\/RobotsRider\/ThirdParty\/theHarvester.py/\/opt\/pentest\/RobotsRider\/ThirdParty\/theharvester\/theHarvester.py/g' {} \;
 find /opt/pentest/RobotsRider/classes -type f -exec sed -i 's/\/tmp/\/opt\/pentest\/tmp/g' {} \;
-find /opt/pentest/RobotsRider/classes -type f -exec sed -i 's/-f #{thtmpfile}/-o #{thtmpfile}/g' {} \;
+find /opt/pentest/RobotsRider/classes -type f -exec sed -i 's/-f #{thtmpfile}/-o H #{thtmpfile}/g' {} \;
+find /opt/pentest/RobotsRider/classes -type f -exec sed -i 's/h.include?/("" || h).include?/g' {} \;
 
 echo 'Creating Aliases...'
 touch /opt/pentest/RobotsRider/run.sh
@@ -112,6 +116,9 @@ echo 'ruby robotsrider.rb "$@"' >> /opt/pentest/RobotsRider/run.sh
 echo 'cd $DIR' >> /opt/pentest/RobotsRider/run.sh
 touch /home/$1/.bash_aliases
 echo 'alias webscan=/opt/pentest/RobotsRider/run.sh' >> /home/$1/.bash_aliases
+echo 'alias harvest=/opt/pentest/RobotsRider/ThirdParty/theharvester/theHarvester.py' >> /home/$1/.bash_aliases
+echo 'alias wfuzz=/opt/pentest/RobotsRider/ThirdParty/wfuzz/wfuzz.py' >> /home/$1/.bash_aliases
+echo 'alias plown=/opt/pentest/RobotsRider/ThirdParty/plown/plown.py' >> /home/$1/.bash_aliases
 echo 'alias metasploit=/opt/pentest/msf3/msfconsole' >> /home/$1/.bash_aliases
 
 echo 'Setting the Correct Permissions for the Current User'
