@@ -39,6 +39,10 @@ theharvester
 
 robotosrider
 
+aircrack-ng
+
+airoscript-ng
+
 exploits database
 
 lsb-release
