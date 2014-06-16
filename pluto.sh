@@ -142,6 +142,7 @@ echo 'alias harvest=/opt/pentest/RobotsRider/ThirdParty/theharvester/theHarveste
 echo 'alias wfuzz=/opt/pentest/RobotsRider/ThirdParty/wfuzz/wfuzz.py' >> /home/$1/.bash_aliases
 echo 'alias plown=/opt/pentest/RobotsRider/ThirdParty/plown/plown.py' >> /home/$1/.bash_aliases
 echo 'alias metasploit=/opt/pentest/msf3/msfconsole' >> /home/$1/.bash_aliases
+echo 'alias set=setoolkit' >> /home/$1/.bash_aliases
 
 echo 'Setting the Correct Permissions for the Current User'
 chown $1:$1 /home/$1/.bash_aliases
