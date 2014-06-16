@@ -11,7 +11,9 @@ Install: ./pluto.sh username
 
 Usage
 =====
-At the console type either of the following to find out about a particular app installed in /opt/pentest:
+There are a lot of apps installed by this script, each has it's own documentation.
+
+Here are some basic help commands to get you started:
 
 webscan --help
 
@@ -22,6 +24,10 @@ wfuzz --help
 plown --help
 
 metasploit --help
+
+aircrack-ng --help
+
+airoscript-ng --help
 
 Applications
 ============
