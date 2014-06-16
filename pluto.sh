@@ -55,6 +55,10 @@ fi
 echo "Installing Ruby Application Dependencies..."
 gem install --no-ri --no-rdoc bundler nokogiri colorize rake sqlite3
 
+# BUNDLE SHOULD BE RUN AS A NON-ROOT USER
+su -c 'bundle update' $1
+su -c 'bundle install' $1
+
 echo "Installing Applications From Source..."
 echo "Now Installing: Aircrack..."
 svn co http://svn.aircrack-ng.org/trunk/ /opt/pentest/aircrack-ng
@@ -92,12 +96,6 @@ echo "Now Installing: Metasploit Framework..."
 wget http://downloads.metasploit.com/data/releases/framework-latest.tar.bz2
 tar jxpf framework-latest.tar.bz2
 rm -rf framework-latest.tar.bz2
-cd /opt/pentest/msf3/
-# SET THE CORRECT PERMISSION FOR BUNDLE
-chown -R $1:$1 /opt/pentest/msf3
-# BUNDLE SHOULD BE RUN AS A NON-ROOT USER
-su -c 'bundle update' $1
-su -c 'bundle install' $1
 cd /opt/pentest
 
 echo "Now Installing: Social Engineer Toolkit..."
@@ -110,6 +108,16 @@ echo "Now Installing: Offensive Security Expliot Database..."
 git clone https://github.com/offensive-security/exploit-database
 cd
 
+echo "Now Installing: Rootkit Hunter Installer..."
+touch /opt/pentest/get-rkhunter.sh
+echo 'wget --content-disposition http://sourceforge.net/projects/rkhunter/files/latest/download?source=files' >> get-rkhunter.sh
+echo 'tar -xvf rkhunter-*.tar.gz' >> /opt/pentest/get-rkhunter.sh
+echo 'rm -rf rkhunter-*.tar.gz' >> /opt/pentest/get-rkhunter.sh
+echo 'mv rkhunter-* rootkit-hunter' >> /opt/pentest/get-rkhunter.sh
+echo 'cd rootkit-hunter' >> /opt/pentest/get-rkhunter.sh
+echo './installer.sh --layout default --install' >> /opt/pentest/get-rkhunter.sh
+echo 'cd' >> /opt/pentest/get-rkhunter.sh
+
 echo "Setting the Correct Application Permissions..."
 chmod +x /opt/pentest/RobotsRider/robotsrider.rb
 chmod +x /opt/pentest/RobotsRider/ThirdParty/wpscan/wpscan.rb
@@ -117,6 +125,7 @@ chmod +x /opt/pentest/RobotsRider/ThirdParty/plown/plown.py
 chmod +x /opt/pentest/RobotsRider/ThirdParty/DPScan/DPScan.py
 chmod +x /opt/pentest/RobotsRider/ThirdParty/joomscan/joomscan.pl
 chmod +x /opt/pentest/RobotsRider/ThirdParty/theharvester/theHarvester.py
+chmod +x /opt/pentest/get-rkhunter.sh
 
 echo "Creating the Configuration Files..."
 find /opt/pentest/RobotsRider/config -type f -exec sed -i 's/\/home\/harvester\/Tools/\/opt\/pentest\/RobotsRider\/ThirdParty/g' {} \;
