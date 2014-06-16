@@ -19,6 +19,19 @@ gem 'robots'
 # Needed for some post modules
 gem 'sqlite3'
 
+# Needed for RobotsRider
+gem 'optparse'
+gem 'colorize'
+gem 'fileutils'
+gem 'net/http'
+gem 'net/https'
+gem 'logger'
+gem 'uri'
+gem 'open-uri'
+gem 'timeout'
+gem 'pp'
+gem 'mechanize'
+
 group :db do
   # Needed for Msf::DbManager
   gem 'activerecord', '>= 3.0.0', '< 4.0.0'
