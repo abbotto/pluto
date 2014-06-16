@@ -29,7 +29,7 @@ gem 'logger'
 gem 'uri'
 gem 'open-uri'
 gem 'timeout'
-gem 'pp'
+# gem 'pp'
 gem 'mechanize'
 
 group :db do
