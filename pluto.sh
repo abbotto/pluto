@@ -25,13 +25,6 @@ echo ""
 echo "-------------------------------------------------------------"
 echo ""
 
-echo 'Escalating Privileges for the Current User...'
-# INVOKE SUDO
-if [ $EUID != 0 ]; then
-    sudo "$0" "$@"
-    exit $?
-fi
-
 echo "Setting Owner: $1"
 echo "Creating the Pentest Directory..."
 mkdir /opt/pentest
@@ -53,9 +46,13 @@ if grep --quiet "Raspbian" /etc/issue; then
 fi
 
 echo "Installing Ruby Application Dependencies..."
-gem install --no-ri --no-rdoc bundler nokogiri colorize rake sqlite3
+gem install --no-ri --no-rdoc bundler
 
 # BUNDLE SHOULD BE RUN AS A NON-ROOT USER
+wget https://raw.githubusercontent.com/o0110o/pluto/master/Gemfile
+touch Gemfile.lock
+chown $1:$1 Gemfile
+chown $1:$1 Gemfile.lock
 su -c 'bundle update' $1
 su -c 'bundle install' $1
 
@@ -82,7 +79,6 @@ cd /opt/pentest
 git clone https://github.com/felmoltor/RobotsRider
 cd RobotsRider
 ruby install.3rd.party.rb
-rm /opt/pentest/RobotsRider/ThirdParty/joomscan/joomscan.pl && wget -O - http://pastebin.com/raw.php?i=tJxLBcy9 > /opt/pentest/RobotsRider/ThirdParty/joomscan/joomscan.pl
 cd /opt/pentest
 
 echo "Now Installing: TheHarvester..."
