@@ -106,12 +106,13 @@ cd
 
 echo "Now Installing: Rootkit Hunter Installer..."
 touch /opt/pentest/get-rkhunter.sh
-echo 'wget --content-disposition http://sourceforge.net/projects/rkhunter/files/latest/download?source=files' >> get-rkhunter.sh
+echo 'wget --content-disposition http://sourceforge.net/projects/rkhunter/files/latest/download?source=files' >> /opt/pentest/get-rkhunter.sh
 echo 'tar -xvf rkhunter-*.tar.gz' >> /opt/pentest/get-rkhunter.sh
 echo 'rm -rf rkhunter-*.tar.gz' >> /opt/pentest/get-rkhunter.sh
 echo 'mv rkhunter-* rootkit-hunter' >> /opt/pentest/get-rkhunter.sh
 echo 'cd rootkit-hunter' >> /opt/pentest/get-rkhunter.sh
-echo './installer.sh --layout default --install' >> /opt/pentest/get-rkhunter.sh
+echo 'sudo ./installer.sh --layout default --install' >> /opt/pentest/get-rkhunter.sh
+echo 'sudo chown $1:$1 /opt/pentest/rootkit-hunter' >> /opt/pentest/get-rkhunter.sh
 echo 'cd' >> /opt/pentest/get-rkhunter.sh
 
 echo "Setting the Correct Application Permissions..."
