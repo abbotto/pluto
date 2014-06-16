@@ -55,6 +55,8 @@ chown $1:$1 Gemfile
 chown $1:$1 Gemfile.lock
 su -c 'bundle update' $1
 su -c 'bundle install' $1
+rm Gemfile
+rm Gemfile.lock
 
 echo "Installing Applications From Source..."
 echo "Now Installing: Aircrack..."
@@ -112,8 +114,8 @@ echo 'rm -rf rkhunter-*.tar.gz' >> /opt/pentest/get-rkhunter.sh
 echo 'mv rkhunter-* rootkit-hunter' >> /opt/pentest/get-rkhunter.sh
 echo 'cd rootkit-hunter' >> /opt/pentest/get-rkhunter.sh
 echo 'sudo ./installer.sh --layout default --install' >> /opt/pentest/get-rkhunter.sh
-echo 'sudo chown $1:$1 /opt/pentest/rootkit-hunter' >> /opt/pentest/get-rkhunter.sh
-echo 'cd' >> /opt/pentest/get-rkhunter.sh
+echo 'sudo chown $1:$1 rootkit-hunter' >> /opt/pentest/get-rkhunter.sh
+echo 'cd ..' >> /opt/pentest/get-rkhunter.sh
 
 echo "Setting the Correct Application Permissions..."
 chmod +x /opt/pentest/RobotsRider/robotsrider.rb
@@ -155,13 +157,3 @@ chown $1:$1 /home/$1/.bash_aliases
 chown -R $1:$1 /opt/pentest
 
 echo 'Setup completed. Have Fun...'
-echo "---------------------------------------------------------------------"
-echo "  ________   ________     _____     _____   ________   ________      "
-echo " |\   __  \ |\   __  \   / __  \   / __  \ |\   __  \ |\   __  \     "
-echo " \ \  \|\  \\ \  \|\  \ |\/_|\  \ |\/_|\  \\ \  \|\  \\ \  \|\  \    "
-echo "  \ \  \\\  \\ \  \\\  \\|/ \ \  \\|/ \ \  \\ \  \\\  \\ \  \\\  \   "
-echo "   \ \  \\\  \\ \  \\\  \    \ \  \    \ \  \\ \  \\\  \\ \  \\\  \  "
-echo "    \ \_______\\ \_______\    \ \__\    \ \__\\ \_______\\ \_______\ "
-echo "     \|_______| \|_______|     \|__|     \|__| \|_______| \|_______| "
-echo ""
-echo "---------------------------------------------------------------------"
