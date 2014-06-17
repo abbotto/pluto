@@ -94,11 +94,13 @@ echo "Now Installing: Metasploit Framework..."
 wget http://downloads.metasploit.com/data/releases/framework-latest.tar.bz2
 tar jxpf framework-latest.tar.bz2
 rm -rf framework-latest.tar.bz2
+mv msf* metasploit
 cd /opt/pentest
 
 echo "Now Installing: Social Engineer Toolkit..."
 git clone https://github.com/trustedsec/social-engineer-toolkit/
-cd /opt/pentest/social-engineer-toolkit/
+cd /opt/pentest/social-engineer-toolkit
+find /opt/pentest/social-engineer-toolkit -type f -exec sed -i 's/\/opt\/metasploit\/apps\/pro\/msf3/\/opt\/pentest\/metasploit/g' {} \;
 python setup.py install
 cd /opt/pentest
 
@@ -149,7 +151,7 @@ echo 'alias webscan=/opt/pentest/RobotsRider/run.sh' >> /home/$1/.bash_aliases
 echo 'alias harvest=/opt/pentest/RobotsRider/ThirdParty/theharvester/theHarvester.py' >> /home/$1/.bash_aliases
 echo 'alias wfuzz=/opt/pentest/RobotsRider/ThirdParty/wfuzz/wfuzz.py' >> /home/$1/.bash_aliases
 echo 'alias plown=/opt/pentest/RobotsRider/ThirdParty/plown/plown.py' >> /home/$1/.bash_aliases
-echo 'alias metasploit=/opt/pentest/msf3/msfconsole' >> /home/$1/.bash_aliases
+echo 'alias metasploit=/opt/pentest/metasploit/msfconsole' >> /home/$1/.bash_aliases
 echo 'alias set=setoolkit' >> /home/$1/.bash_aliases
 
 echo 'Setting the Correct Permissions for the Current User'
