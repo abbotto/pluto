@@ -19,6 +19,10 @@ gem 'robots'
 # Needed for some post modules
 gem 'sqlite3'
 
+# Required by Metasplit
+gem 'i18n', '0.6.9'
+gem 'rake', '10.1.0'
+
 # Needed for RobotsRider
 gem 'optparse'
 gem 'colorize'
