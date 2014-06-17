@@ -21,7 +21,6 @@ gem 'sqlite3'
 
 # Required by Metasplit
 gem 'i18n', '0.6.9'
-gem 'rake', '10.1.0'
 
 # Needed for RobotsRider
 gem 'optparse'
@@ -62,7 +61,7 @@ group :development, :test do
   # Make rspec output shorter and more useful
   gem 'fivemat', '1.2.1'
   # running documentation generation tasks and rspec tasks
-  gem 'rake', '>= 10.0.0'
+  gem 'rake', '>= 10.1.0'
 end
 
 group :test do
