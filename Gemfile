@@ -23,13 +23,10 @@ gem 'sqlite3'
 gem 'optparse'
 gem 'colorize'
 gem 'fileutils'
-gem 'net/http'
-# gem 'net/https'
 gem 'logger'
 gem 'uri'
 gem 'open-uri'
 gem 'timeout'
-# gem 'pp'
 gem 'mechanize'
 
 group :db do
