@@ -101,6 +101,7 @@ echo "Now Installing: Social Engineer Toolkit..."
 git clone https://github.com/trustedsec/social-engineer-toolkit/
 cd /opt/pentest/social-engineer-toolkit
 find /opt/pentest/social-engineer-toolkit -type f -exec sed -i 's/\/opt\/metasploit\/apps\/pro\/msf3/\/opt\/pentest\/metasploit/g' {} \;
+find /usr/share/setoolkit -type f -exec sed -i 's/\/opt\/metasploit\/apps\/pro\/msf3/\/opt\/pentest\/metasploit/g' {} \;
 python setup.py install
 cd /opt/pentest
 
