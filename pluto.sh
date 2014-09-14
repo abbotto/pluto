@@ -158,5 +158,6 @@ echo 'alias set=setoolkit' >> /home/$1/.bash_aliases
 echo 'Setting the Correct Permissions for the Current User'
 chown $1:$1 /home/$1/.bash_aliases
 chown -R $1:$1 /opt/pentest
+chown -R $1:$1 /usr/share/setoolkit
 
 echo 'Setup completed. Have Fun...'
